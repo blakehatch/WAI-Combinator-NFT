@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@limitbreak/creator-token-contracts/contracts
-/erc721c/ERC721C.sol";
-import "@limitbreak/creator-token-contracts/contracts
-/programmable-royalties/ImmutableMinterRoyalties.sol";
+import "@limitbreak/creator-token-contracts/contracts/erc721c/ERC721C.sol";
+import "@limitbreak/creator-token-contracts/contracts/programmable-royalties/ImmutableMinterRoyalties.sol";
 
-contract ERC721CWithImmutableMinterRoyalties is ERC721C, ImmutableMinterRoyalties {
+contract BaseOnMars is ERC721C, ImmutableMinterRoyalties {
 
     constructor(
         uint256 royaltyFeeNumerator_,
