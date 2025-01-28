@@ -1,66 +1,40 @@
-## Foundry
+# Base on Mars NFT Project
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Base on Mars is a unique NFT collection that spans across two blockchains - Ethereum and Solana - connected via LayerZero's cross-chain messaging protocol.
 
-Foundry consists of:
+## Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+The project consists of two complementary NFT contracts:
+- An ERC-721 contract deployed on Ethereum
+- An SPL Token contract deployed on Solana
 
-## Documentation
+These contracts work together to create a seamless cross-chain NFT experience where actions on one chain can trigger effects on the other through LayerZero's messaging layer.
 
-https://book.getfoundry.sh/
+## Architecture
 
-## Usage
+The system uses LayerZero's cross-chain messaging to maintain state consistency between the two NFT collections. When certain actions occur on one chain (like minting or burning), corresponding updates are triggered on the other chain through LayerZero's messaging protocol.
 
-### Build
+### Ethereum Contract
+- Standard ERC-721 implementation
+- Integration with LayerZero's endpoint for cross-chain messaging
+- Ability to trigger state changes on the Solana side
 
-```shell
-$ forge build
-```
+### Solana Contract  
+- SPL Token implementation
+- Integration with LayerZero's Solana endpoint
+- Capability to receive and process messages from the Ethereum contract
 
-### Test
+## Cross-Chain Functionality
 
-```shell
-$ forge test
-```
+The NFTs on both chains are linked through LayerZero, enabling:
+- Cross-chain ownership verification
+- Synchronized minting/burning across chains
+- Unified metadata and attributes
+- Seamless transfer of NFT properties between chains
 
-### Format
+## Technical Details
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+The project leverages:
+- Foundry for Ethereum development (see below for Foundry-specific commands)
+- Anchor framework for Solana development
+- LayerZero's messaging protocol for cross-chain communication
